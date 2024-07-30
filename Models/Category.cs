@@ -8,6 +8,7 @@ namespace barbieProject.Models
     public class Category
     {
         private int CategoryId { get; set; }
+        public string CategoryName { get; set; }
         public ICollection<User> Users { get; set; }
         public ICollection<Post> Posts { get; set; }
     }

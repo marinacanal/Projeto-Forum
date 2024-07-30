@@ -9,7 +9,8 @@ namespace barbieProject.Models
     {
         private int PostId { get; set; }
         public string MidiaPost { get; set; }
-        public string TextoPost { get; set; }
+        public string TextPost { get; set; }
+        public DateTime DateTimePostCreated { get; set; } = DateTime.Now;
         public ICollection<Like> Likes { get; set; }
         public ICollection<Comment> Comments { get; set; }
     }

@@ -8,6 +8,7 @@ namespace barbieProject.Models
     public class Comment
     {
         private int CommentId { get; set; }
+        public DateTime CreatedCommentDateTime { get; set; } = DateTime.Now;
         public ICollection<Like> Likes { get; set; }
     }
 }
