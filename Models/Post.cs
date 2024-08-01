@@ -7,7 +7,7 @@ namespace barbieProject.Models
 {
     public class Post
     {
-        private int PostId { get; set; }
+        public int PostId { get; set; }
         public string MidiaPost { get; set; }
         public string TextPost { get; set; }
         public DateTime DateTimePostCreated { get; set; } = DateTime.Now;

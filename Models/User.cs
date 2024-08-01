@@ -7,7 +7,7 @@ namespace barbieProject.Models
 {
     public class User
     {
-        private int UserId { get; set; }
+        public int UserId { get; set; }
         public string UserName { get; set; }
         public string UserEmail { get; set; }
         public string UserPassword { get; set; }

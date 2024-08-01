@@ -1,7 +1,12 @@
+using barbieProject.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ForumContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("ConexaoPadrao")));
 
 var app = builder.Build();
 

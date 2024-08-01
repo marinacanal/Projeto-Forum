@@ -7,6 +7,6 @@ namespace barbieProject.Models
 {
     public class Like
     {
-        private int LikeId { get; set; }
+        public int LikeId { get; set; }
     }
 }
