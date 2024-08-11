@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 
 namespace barbieProject.Models
 {
-    public class Comment
+    public class Channel
     {
-        public int CommentId { get; set; }
-        public string Content { get; set; }
+        public int ChannelId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public int PostId { get; set; }
-        public Post Post { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
-        public ICollection<Like> Likes { get; set; }
+        public ICollection<User> Members { get; set; }
+        public ICollection<Post> Posts { get; set; }
     }
 }

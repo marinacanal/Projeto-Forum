@@ -9,11 +9,11 @@ using Microsoft.Extensions.Logging;
 namespace barbieProject.Controllers
 {
     [Route("[controller]")]
-    public class SiteController : Controller
+    public class ChannelController : Controller
     {
-        private readonly ILogger<SiteController> _logger;
+        private readonly ILogger<ChannelController> _logger;
 
-        public SiteController(ILogger<SiteController> logger)
+        public ChannelController(ILogger<ChannelController> logger)
         {
             _logger = logger;
         }

@@ -22,20 +22,31 @@ namespace barbieProject.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("barbieProject.Models.Category", b =>
+            modelBuilder.Entity("barbieProject.Models.Channel", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("ChannelId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CategoryId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ChannelId"));
 
-                    b.Property<string>("CategoryName")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.HasKey("CategoryId");
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
 
-                    b.ToTable("Categories");
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ChannelId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Channels");
                 });
 
             modelBuilder.Entity("barbieProject.Models.Comment", b =>
@@ -46,13 +57,16 @@ namespace barbieProject.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CommentId"));
 
-                    b.Property<DateTime>("CreatedCommentDateTime")
+                    b.Property<string>("Content")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("PostId")
+                    b.Property<int>("PostId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("CommentId");
@@ -78,7 +92,7 @@ namespace barbieProject.Migrations
                     b.Property<int?>("PostId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("LikeId");
@@ -100,24 +114,24 @@ namespace barbieProject.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PostId"));
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("ChannelId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("DateTimePostCreated")
+                    b.Property<string>("Content")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("MidiaPost")
+                    b.Property<string>("Title")
                         .HasColumnType("text");
 
-                    b.Property<string>("TextPost")
-                        .HasColumnType("text");
-
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("PostId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("ChannelId");
 
                     b.HasIndex("UserId");
 
@@ -132,74 +146,115 @@ namespace barbieProject.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UserId"));
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int?>("ChannelId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("UserEmail")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProfilePictureUrl")
                         .HasColumnType("text");
 
                     b.Property<string>("UserName")
                         .HasColumnType("text");
 
-                    b.Property<string>("UserPassword")
-                        .HasColumnType("text");
-
                     b.HasKey("UserId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("ChannelId");
 
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("barbieProject.Models.Channel", b =>
+                {
+                    b.HasOne("barbieProject.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("barbieProject.Models.Comment", b =>
                 {
-                    b.HasOne("barbieProject.Models.Post", null)
+                    b.HasOne("barbieProject.Models.Post", "Post")
                         .WithMany("Comments")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("barbieProject.Models.User", null)
+                    b.HasOne("barbieProject.Models.User", "User")
                         .WithMany("Comments")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("barbieProject.Models.Like", b =>
                 {
-                    b.HasOne("barbieProject.Models.Comment", null)
+                    b.HasOne("barbieProject.Models.Comment", "Comment")
                         .WithMany("Likes")
                         .HasForeignKey("CommentId");
 
-                    b.HasOne("barbieProject.Models.Post", null)
+                    b.HasOne("barbieProject.Models.Post", "Post")
                         .WithMany("Likes")
                         .HasForeignKey("PostId");
 
-                    b.HasOne("barbieProject.Models.User", null)
+                    b.HasOne("barbieProject.Models.User", "User")
                         .WithMany("Likes")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Comment");
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("barbieProject.Models.Post", b =>
                 {
-                    b.HasOne("barbieProject.Models.Category", null)
+                    b.HasOne("barbieProject.Models.Channel", "Channel")
                         .WithMany("Posts")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("ChannelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("barbieProject.Models.User", null)
+                    b.HasOne("barbieProject.Models.User", "User")
                         .WithMany("Posts")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Channel");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("barbieProject.Models.User", b =>
                 {
-                    b.HasOne("barbieProject.Models.Category", null)
-                        .WithMany("Users")
-                        .HasForeignKey("CategoryId");
+                    b.HasOne("barbieProject.Models.Channel", null)
+                        .WithMany("Members")
+                        .HasForeignKey("ChannelId");
                 });
 
-            modelBuilder.Entity("barbieProject.Models.Category", b =>
+            modelBuilder.Entity("barbieProject.Models.Channel", b =>
                 {
-                    b.Navigation("Posts");
+                    b.Navigation("Members");
 
-                    b.Navigation("Users");
+                    b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("barbieProject.Models.Comment", b =>
