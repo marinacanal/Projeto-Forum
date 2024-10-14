@@ -13,6 +13,8 @@ namespace barbieProject.Models
         public string Password { get; set; }
         public string ProfilePictureUrl { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public ICollection<Channel> ChannelsCreator { get; set; }
+        public ICollection<ChannelUser> ChannelsMember { get; set; }
         public ICollection<Post> Posts { get; set; }
         public ICollection<Like> Likes { get; set; }
         public ICollection<Comment> Comments { get; set; }

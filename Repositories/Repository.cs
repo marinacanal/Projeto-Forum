@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace barbieProject.Repositories
 {
+    // aqui eu implemento os metodos estabelecidos na minha interface
     public class Repository<T> : IRepository<T> where T : class
     {
         private readonly DbContext _context; // gerencia conexao com o banco
@@ -28,16 +29,16 @@ namespace barbieProject.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public void Update(T entity)
+        public async Task UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(T entity)
+        public async Task DeleteAsync(T entity)
         {
             _dbSet.Remove(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }
