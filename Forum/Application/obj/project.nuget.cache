@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "+X+21syuAtJD5fV3x0zC9CfHs5I9/ANvQ5beyoFxvXoJ8r0jsashKtiZjGguaOsl/WzL/jTLyC4UmIb3EgmIQQ==",
+  "success": true,
+  "projectFilePath": "/home/kamore/Documents/C#/Projeto-Forum/Forum/Application/Application.csproj",
+  "expectedPackageFiles": [
+    "/home/kamore/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.8/microsoft.aspnetcore.app.ref.8.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
