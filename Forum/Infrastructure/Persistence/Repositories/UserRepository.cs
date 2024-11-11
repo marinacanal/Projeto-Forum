@@ -1,4 +1,4 @@
-using Forum.Entities;
+using Domain.Models.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
@@ -27,18 +27,5 @@ namespace Infrastructure.Repositories
                 .Where(user => user.UserName.Contains(username))
                 .ToListAsync();
         }
-
-        // metodo pra autenticar o usuario
-        // getbyemail
-        // se nao achou, tenta pelo nome
-        // getbyusername
-        // se nao achou
-            // usuario nao encontrado
-
-        // senha = senha.criptografada
-        // se senha = user.senha
-            // autenticado
-        // se nao
-            // senha incorreta
     }
 }

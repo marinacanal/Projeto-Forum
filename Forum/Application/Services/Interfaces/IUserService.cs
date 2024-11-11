@@ -1,6 +1,6 @@
-using barbieProject.Models;
+using Domain.Models.User;
 
-namespace barbieProject.Services.Interfaces
+namespace Forum.Interfaces
 {
     public interface IUserService
     {

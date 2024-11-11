@@ -1,5 +1,6 @@
-using System;
-using Forum.Entities;
+using Domain.Models.Channel;
+using Domain.Models.User;
+using Forum.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Context

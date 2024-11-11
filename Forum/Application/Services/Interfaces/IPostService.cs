@@ -1,6 +1,7 @@
-using barbieProject.Models;
+using Domain.Models.User;
+using Forum.Models;
 
-namespace barbieProject.Services.Interfaces
+namespace Forum.Interfaces
 {
     public interface IPostService
     {

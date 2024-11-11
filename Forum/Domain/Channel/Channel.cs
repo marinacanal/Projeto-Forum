@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Forum.Entities
+namespace Forum.Models
 {
     public class Channel
     {
@@ -13,7 +8,7 @@ namespace Forum.Entities
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public int CreatorId { get; set; }
         public User Creator { get; set; }
-        public ICollection<ChannelUser> Members { get; set; }
+        public ICollection<ChannelMembers> Members { get; set; }
         public ICollection<Post> Posts { get; set; }
     }
 }

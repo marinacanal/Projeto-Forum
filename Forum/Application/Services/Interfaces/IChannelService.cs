@@ -1,6 +1,6 @@
-using barbieProject.Models;
+using Forum.Models;
 
-namespace barbieProject.Services.Interfaces
+namespace Forum.Interfaces
 {
     public interface IChannelService
     {

@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Forum.Entities;
+using Domain.Models.Channel;
+using Domain.Models.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories

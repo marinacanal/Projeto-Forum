@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9oBIpdqcqiojMcp1C9wqmRG+dumwEVxBwX0MtyY+hNU43U10eB1Gb1rKMuH2yR31SWLa4BGuD/8tHEO+3ETsWA==",
+  "dgSpecHash": "6XTKOfJLVT3sYA+/7VL7FGK2Q6dnNNsN1VsbAqEUEdZ5aTAT3nfUyOxSZdjpk7XJnUlyxdYDO6ClK747LxhIag==",
   "success": true,
   "projectFilePath": "/home/kamore/Documents/C#/Projeto-Forum/Forum/Web/Web.csproj",
   "expectedPackageFiles": [
@@ -26,7 +26,7 @@
     "/home/kamore/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "/home/kamore/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
     "/home/kamore/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",
-    "/home/kamore/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.8/microsoft.aspnetcore.app.ref.8.0.8.nupkg.sha512"
+    "/home/kamore/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.10/microsoft.aspnetcore.app.ref.8.0.10.nupkg.sha512"
   ],
   "logs": []
 }
