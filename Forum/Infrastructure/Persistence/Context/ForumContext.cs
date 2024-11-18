@@ -1,5 +1,3 @@
-using Domain.Models.Channel;
-using Domain.Models.User;
 using Forum.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +11,6 @@ namespace Infrastructure.Context
         public DbSet<Like> Likes { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Channel> Channels { get; set; }
-        public DbSet<ChannelUser> ChannelUser { get; set; }
+        public DbSet<ChannelMembers> ChannelMembers { get; set; }
     }
 }
