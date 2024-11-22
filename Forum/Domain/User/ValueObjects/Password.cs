@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using Konscious.Security.Cryptography;
 
 namespace Forum.Domain {
 
@@ -20,20 +21,30 @@ namespace Forum.Domain {
             ValidatePasswordRules(value);
             
             (string hashedPassword, string salt) = HashPassword(value);
-            Value = hashedPassword + "$" + salt;
+            Value = $"{hashedPassword}${salt}";
         }
+
 
         // recebe um valor (password), e retorna dois (hashedPassword, salt)
         public static (string hashedPassword, string salt) HashPassword(string password)
-        {
+        {   
             var saltBytes = new byte[SaltSize]; // inicializa array saltBytes
             var rng = RandomNumberGenerator.Create(); // gera numeros randomicos
             rng.GetBytes(saltBytes); // popula saltBytes com random bytes gerados
-            
-            string salt = Convert.ToBase64String(saltBytes); // converte de byte para string
+            var salt = Convert.ToBase64String(saltBytes); // converte bytes p/ string
 
-            // configurar Argon2id -- IMPLEMENTAR
-            var hashedPassword = "a";
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(password); // password bytes
+
+            var argon2id = new Argon2id(passwordBytes)
+            {
+                Salt = saltBytes,
+                DegreeOfParallelism = DegreeOfParallelism,
+                Iterations = TimeCost,
+                MemorySize = MemoryCost
+            };
+
+            byte[] hashBytes = argon2id.GetBytes(HashSize);
+            var hashedPassword = Convert.ToBase64String(hashBytes);
 
             return(hashedPassword, salt);
         }
@@ -55,7 +66,7 @@ namespace Forum.Domain {
 
             if (!Regex.IsMatch(password, @"[\W_]"))
                 throw new ArgumentException("A senha tem que ter pelo menos um caracter especial!");
-    
+                
         }
     }
 }

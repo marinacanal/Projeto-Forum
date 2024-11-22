@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "9K3aqj2fF5s/pZjAi59GF1rbNgJsXVHu6WenZFgXOnSb4/RCzlNVX3N6n5W5WzXJ6n49Rr+36lZqfhyUPY209g==",
+  "dgSpecHash": "e1sadJ+ka75fUx2Crduh9niY4L5C6+Bhip/V3WDuyTq0ByilkLdwEI7KoikaPyM3M9RkE6WE0BPYpQAheCGxIQ==",
   "success": true,
   "projectFilePath": "/home/kamore/Documents/C#/Projeto-Forum/Forum/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
     "/home/kamore/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/home/kamore/.nuget/packages/konscious.security.cryptography.argon2/1.3.1/konscious.security.cryptography.argon2.1.3.1.nupkg.sha512",
+    "/home/kamore/.nuget/packages/konscious.security.cryptography.blake2/1.1.1/konscious.security.cryptography.blake2.1.1.1.nupkg.sha512",
     "/home/kamore/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "/home/kamore/.nuget/packages/microsoft.codeanalysis.analyzers/3.3.3/microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
     "/home/kamore/.nuget/packages/microsoft.codeanalysis.common/4.5.0/microsoft.codeanalysis.common.4.5.0.nupkg.sha512",
@@ -38,6 +40,7 @@
     "/home/kamore/.nuget/packages/system.composition.runtime/6.0.0/system.composition.runtime.6.0.0.nupkg.sha512",
     "/home/kamore/.nuget/packages/system.composition.typedparts/6.0.0/system.composition.typedparts.6.0.0.nupkg.sha512",
     "/home/kamore/.nuget/packages/system.io.pipelines/6.0.3/system.io.pipelines.6.0.3.nupkg.sha512",
+    "/home/kamore/.nuget/packages/system.memory/4.5.4/system.memory.4.5.4.nupkg.sha512",
     "/home/kamore/.nuget/packages/system.reflection.metadata/6.0.1/system.reflection.metadata.6.0.1.nupkg.sha512",
     "/home/kamore/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/home/kamore/.nuget/packages/system.text.encoding.codepages/6.0.0/system.text.encoding.codepages.6.0.0.nupkg.sha512",
