@@ -9,64 +9,25 @@ namespace Forum.Domain {
     {
         public string Value { get; private set; } // retorna a senha
 
-        private const int SaltSize = 16; // define o tamanho do salt, 128 bits
-        private const int HashSize = 32; // define o tamanho do hash, 256 bits
-        private const int MemoryCost = 65536; // memoria usada no processo de hashing, 64 MB
-        private const int TimeCost = 4; // iterações do algoritmo
-        private const int DegreeOfParallelism = 2; // threads usadas
-                
-
-        // construtor, garantindo que a senha sempre seja validada e depois hashada
+        // construtor, garante que a senha sempre seja valida
         public Password(string value) {
-            ValidatePasswordRules(value);
-            
-            (string hashedPassword, string salt) = HashPassword(value);
-            Value = $"{hashedPassword}${salt}";
-        }
 
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("A senha não pode ser vazia!");
 
-        // recebe um valor (password), e retorna dois (hashedPassword, salt)
-        public static (string hashedPassword, string salt) HashPassword(string password)
-        {   
-            var saltBytes = new byte[SaltSize]; // inicializa array saltBytes
-            var rng = RandomNumberGenerator.Create(); // gera numeros randomicos
-            rng.GetBytes(saltBytes); // popula saltBytes com random bytes gerados
-            var salt = Convert.ToBase64String(saltBytes); // converte bytes p/ string
-
-            byte[] passwordBytes = Encoding.UTF8.GetBytes(password); // password bytes
-
-            var argon2id = new Argon2id(passwordBytes)
-            {
-                Salt = saltBytes,
-                DegreeOfParallelism = DegreeOfParallelism,
-                Iterations = TimeCost,
-                MemorySize = MemoryCost
-            };
-
-            byte[] hashBytes = argon2id.GetBytes(HashSize);
-            var hashedPassword = Convert.ToBase64String(hashBytes);
-
-            return(hashedPassword, salt);
-        }
-
-        // valida regras para a senha ser aceita
-        private static void ValidatePasswordRules(string password) 
-        {
-            if (string.IsNullOrWhiteSpace(password))
-            throw new ArgumentException("A senha não pode ser vazia!");
-
-            if (password.Length < 8)
+            if (value.Length < 8)
                 throw new ArgumentException("A senha tem que ter pelo menos 8 caracteres!");
 
-            if (!Regex.IsMatch(password, @"[A-Za-z]"))
+            if (!Regex.IsMatch(value, @"[A-Za-z]"))
                 throw new ArgumentException("A senha tem que ter pelo menos uma letra!");
 
-            if (!Regex.IsMatch(password, @"\d"))
+            if (!Regex.IsMatch(value, @"\d"))
                 throw new ArgumentException("A senha tem que ter pelo menos um número!");
 
-            if (!Regex.IsMatch(password, @"[\W_]"))
+            if (!Regex.IsMatch(value, @"[\W_]"))
                 throw new ArgumentException("A senha tem que ter pelo menos um caracter especial!");
-                
+
+            Value = value;
         }
     }
 }

@@ -15,19 +15,31 @@ namespace Forum.Models
         public string ProfilePictureUrl { get; private set; }
         public DateTime CreatedAt { get; private set; }
 
-        // para navegacao com modelos relacionados
-        public ICollection<Channel> ChannelsCreator { get; private set; }
-        public ICollection<ChannelMembers> ChannelsMember { get; private set; }
-        public ICollection<Post> Posts { get; private set; }
-        public ICollection<Like> Likes { get; private set; }
-        public ICollection<Comment> Comments { get; private set; }
+        // relacoes
+        public IReadOnlyCollection<Channel> ChannelsCreated { get; private set; } 
+        public IReadOnlyCollection<ChannelMembers> JoinedChannels { get; private set; } 
+        public IReadOnlyCollection<Post> Posts { get; private set; } 
+        public IReadOnlyCollection<Like> Likes { get; private set; } 
+        public IReadOnlyCollection<Comment> Comments { get; private set; } 
 
         // construtor
         public User(Username username, Email useremail, Password userpassword) {
             UserId = Guid.NewGuid();
+            CreatedAt = DateTime.UtcNow;
             UserName = username;
             Email = useremail;
             Password = userpassword;
+
+            ChannelsCreated = new List<Channel>();
+            JoinedChannels = new List<ChannelMembers>();
+            Posts = new List<Post>();
+            Comments = new List<Comment>();
+            Likes = new List<Like>();
         }
+
+        // updates
+        public void UpdateUserName(Username username) => UserName = username;
+        public void UpdateUserEmail(Email email) => Email = email;
+        public void UpdatePassword(Password password) => Password = password;
     }
 }
