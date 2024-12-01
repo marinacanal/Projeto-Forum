@@ -1,11 +1,10 @@
 using System.Security.Cryptography;
 using System.Text;
-using Domain.User.Service;
 using Konscious.Security.Cryptography;
 
 namespace Infrastructure.Security
 {
-    public class PasswordHasher : IPasswordHasher
+    public class PasswordHasher 
     {
         private const int SaltSize = 16; // define o tamanho do salt, 128 bits
         private const int HashSize = 32; // define o tamanho do hash, 256 bits

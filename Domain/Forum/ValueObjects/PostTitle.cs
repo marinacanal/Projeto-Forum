@@ -1,4 +1,4 @@
-namespace Domain.PostDomain.ValueObjects
+namespace Domain.Forum.ValueObjects
 {   
     public class Title
     {

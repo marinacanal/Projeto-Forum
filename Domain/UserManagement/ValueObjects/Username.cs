@@ -1,4 +1,4 @@
-namespace Domain.UserDomain.ValueObjects
+namespace Domain.Forum.ValueObjects
 {
     public class Username
     {

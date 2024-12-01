@@ -1,4 +1,6 @@
-namespace Domain.UserDomain
+using Domain.Forum.Entities;
+
+namespace Domain.Forum.Repositories
 {
     public interface IUserRepository 
     {

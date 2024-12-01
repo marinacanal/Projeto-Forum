@@ -1,4 +1,7 @@
-namespace Domain.PostDomain {
+using Domain.Forum.Entities;
+
+namespace Domain.Forum.Repositories 
+{
     public interface IPostRepository {
 
         // get by

@@ -1,10 +1,6 @@
-using Domain.ChannelDomain;
-using Domain.CommentDomain;
-using Domain.PostDomain;
-using Domain.ReactionDomain;
-using Domain.UserDomain.ValueObjects;
+using Domain.Forum.ValueObjects;
 
-namespace Domain.UserDomain
+namespace Domain.Forum.Entities
 {
     public class User
     {
@@ -26,8 +22,9 @@ namespace Domain.UserDomain
         public IReadOnlyCollection<Reaction> Reactions { get; private set; } 
         public IReadOnlyCollection<Comment> Comments { get; private set; } 
 
-        // construtor
-        public User(Username username, Email useremail, Password userpassword) {
+        // constructor
+        public User(Username username, Email useremail, Password userpassword) 
+        {
             UserId = Guid.NewGuid();
             CreatedAt = DateTime.UtcNow;
             UserName = username;
