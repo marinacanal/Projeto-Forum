@@ -1,7 +1,6 @@
-using Domain.ReactionDomain.Enums;
-using Domain.UserDomain;
+using Domain.Forum.Enums;
 
-namespace Domain.ReactionDomain
+namespace Domain.Forum.Entities
 {   
     public class Reaction
     {
@@ -16,7 +15,7 @@ namespace Domain.ReactionDomain
         // like or dislike
         public ReactionType Type { get; private set; }
 
-        // construtor
+        // constructor
         public Reaction(Guid userId, Guid targetId, TargetType targetType, ReactionType reactionType)
         {
             ReactionId = Guid.NewGuid();

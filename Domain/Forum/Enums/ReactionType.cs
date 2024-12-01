@@ -1,4 +1,4 @@
-namespace Domain.ReactionDomain.Enums
+namespace Domain.Forum.Enums
 {
     public enum ReactionType
     {
