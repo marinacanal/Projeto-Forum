@@ -1,4 +1,5 @@
 using Domain.Forum.Entities;
+using Domain.Forum.ValueObjects;
 
 namespace Domain.Forum.Repositories 
 {
@@ -9,8 +10,8 @@ namespace Domain.Forum.Repositories
         Task<List<Post>> GetByUserIdAsync(Guid userId);
 
         // get contains
-        Task<List<Post>> GetContainsContentAsync(string content);
-        Task<List<Post>> GetContainsTitleAsync(string title);
+        Task<List<Post>> GetContainsContentAsync(PostContent content);
+        Task<List<Post>> GetContainsTitleAsync(PostTitle title);
 
         // get in
         Task<List<Post>> GetInChannelAsync(Guid channelId);

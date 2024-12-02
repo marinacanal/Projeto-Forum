@@ -6,10 +6,11 @@ namespace Domain.Forum.Repositories
     public interface IReactionRepository
     {  
         // get by
-        Task <Reaction> GetReactionTypeByTargetTypeAndUserAsync(Guid userId, Guid targetId, TargetType targetType);
+        Task <Reaction> GetByTargetTypeAndUserAsync(Guid userId, Guid targetId, TargetType targetType);
 
         // get all
-        Task <List<Reaction>> GetAllByTargetTypeAsync(Guid targetId, TargetType targetType); // post or comment 
+        Task <List<Reaction>> GetAllByTargetTypeAsync(Guid targetId, TargetType targetType); // post or comment
+        Task <List<Reaction>> GetAllByUserAsync(Guid userId); 
 
         // create
         Task CreateAsync(Reaction reaction);

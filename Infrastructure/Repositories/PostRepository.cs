@@ -1,4 +1,6 @@
-using Forum.Models;
+using Domain.Forum.Entities;
+using Domain.Forum.Repositories;
+using Domain.Forum.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
@@ -26,15 +28,15 @@ namespace Infrastructure.Repositories
         }
 
         // get contains
-        public async Task<List<Post>> GetContainsContentAsync(string content) {
+        public async Task<List<Post>> GetContainsContentAsync(PostContent content) {
             return await _dbSet
-                .Where(post => post.Content.Contains(content))
+                .Where(post => post.Content.Value.Contains(content.ToString()))
                 .ToListAsync();
         }
 
-        public async Task<List<Post>> GetContainsTitleAsync(string title) {
+        public async Task<List<Post>> GetContainsTitleAsync(PostTitle title) {
             return await _dbSet
-                .Where(post => post.Title.Contains(title))
+                .Where(post => post.Title.Value.Contains(title.ToString()))
                 .ToListAsync();
         }
 
