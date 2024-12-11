@@ -1,13 +1,14 @@
-using Forum.Models;
+using Domain.Forum.Entities;
+using Domain.Forum.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
-    public class CommentRepository : Repository<Comment>
+    public class CommentRepository : ICommentRepository
     {
         private readonly DbContext _context;
         private readonly DbSet<Comment> _dbSet;
-        public CommentRepository(DbContext context) : base(context)
+        public CommentRepository(DbContext context)
         {
             _context = context;
             _dbSet = _context.Set<Comment>();

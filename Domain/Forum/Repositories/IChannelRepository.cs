@@ -6,22 +6,22 @@ namespace Domain.Forum.Repositories
     public interface IChannelRepository
     {
         // get by
-        Task <Channel> GetByIdAsync(Guid channelId);
+        Task <Channel> GetByIdAsync(Guid id);
 
-        // get all
-        Task <List<Channel>> GetAllByUserIdAsync(Guid userId);
+        // get all by
+        Task <List<Channel>> GetAllByCreatorIdAsync(Guid creatorId);
 
         // get contains
         Task <List<Channel>> GetContainsNameAsync(ChannelName name);
         Task <List<Channel>> GetContainsDescriptioneAsync(ChannelDescription description);
 
         // create
-        Task CreateAsync();
+        Task CreateAsync(Channel channel);
 
         // update
-        Task UpdateAsync();
+        Task UpdateAsync(Channel channel);
 
         // delete
-        Task DeleteAsync();
+        Task DeleteAsync(Channel channel);
     }
 }

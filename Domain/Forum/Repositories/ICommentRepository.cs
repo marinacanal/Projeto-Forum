@@ -4,18 +4,18 @@ namespace Domain.Forum.Repositories
 {
     public interface ICommentRepository 
     {   
-        // get all
+        // get all by
         Task <List<Comment>> GetAllByPostAsync(Guid postId);
 
         Task <List<Comment>> GetAllByUserAsync(Guid userId);
 
         // create
-        Task CreateAsync();
+        Task CreateAsync(Comment comment);
 
         // update
-        Task UpdateAsync();
+        Task UpdateAsync(Comment comment);
 
         // delete
-        Task DeleteAsync();
+        Task DeleteAsync(Comment comment);
     }
 }

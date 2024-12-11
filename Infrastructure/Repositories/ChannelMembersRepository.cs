@@ -1,23 +1,33 @@
-
-using Forum.Models;
+using Domain.Forum.Entities;
+using Domain.Forum.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
-    public class ChannelUserRepository : Repository<ChannelMembers>
+    public class ChannelMembersRepository : IChannelMembersRepository
     {
         private readonly DbContext _context;
         private readonly DbSet<ChannelMembers> _dbSet;
-        public ChannelUserRepository(DbContext context) : base(context)
+        public ChannelMembersRepository(DbContext context)
         {
             _context = context;
             _dbSet = _context.Set<ChannelMembers>(); 
         }
 
-        public async Task<List<User>> GetUsersInChannelAsync(int channelId) {
+        // get all by
+        public async Task<List<Guid>> GetAllMembersByChannelIdAsync(Guid channelId)
+        {
             return await _dbSet
                 .Where(channelMembers => channelMembers.ChannelId == channelId)
-                .Select(channelMembers => channelMembers.User)
+                .Select(channelMembers => channelMembers.UserId)
+                .ToListAsync();
+        }
+
+        public async Task<List<Guid>> GetAllChannelsByMemberIdAsync(Guid userId)
+        {
+            return await _dbSet
+                .Where(channelMembers => channelMembers.UserId == userId)
+                .Select(channelMembers => channelMembers.ChannelId)
                 .ToListAsync();
         }
     }

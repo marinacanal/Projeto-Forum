@@ -4,7 +4,8 @@ namespace Domain.Forum.Repositories
 {
     public interface IChannelMembersRepository
     {
-        Task <List<ChannelMembers>> GetAllByChannelIdAsync(Guid channelId);
-        Task <List<ChannelMembers>> GetAllChannelsByMemberIdAsync(Guid userId);
+        // get all by
+        Task <List<Guid>> GetAllMembersByChannelIdAsync(Guid channelId);
+        Task <List<Guid>> GetAllChannelsByMemberIdAsync(Guid userId);
     }
 }
