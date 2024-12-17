@@ -5,9 +5,11 @@ namespace Domain.Forum.Entities
     public class Channel
     {
         public Guid ChannelId { get; private set; }
-        public ChannelName Name { get; private set; }
-        public ChannelDescription Description { get; private set; }
         public DateTime CreatedAt { get; private set; }
+        public ChannelName Name { get; private set; }
+        public ChannelDescription Description { get; private set; }       
+
+        // relacoes
         public Guid CreatorId { get; private set; }
         public User Creator { get; private set; }
         public ICollection<ChannelMembers> Members { get; private set; }
@@ -26,14 +28,7 @@ namespace Domain.Forum.Entities
         } 
 
         // updates
-        public void UpdateName(ChannelName name) 
-        {
-            Name = name;
-        }
-
-        public void UpdateDescription(ChannelDescription description) 
-        {
-            Description = description;
-        }
+        public void UpdateName(ChannelName name) => Name = name;
+        public void UpdateDescription(ChannelDescription description) => Description = description;
     }
 }

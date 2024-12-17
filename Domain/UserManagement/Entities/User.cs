@@ -11,7 +11,7 @@ namespace Domain.Forum.Entities
         public Email Email { get; private set; }
         public Password Password { get; private set; }
 
-        // atributos do dominio
+        // atributos da entidade
         public string ProfilePictureUrl { get; private set; }
         public DateTime CreatedAt { get; private set; }
 

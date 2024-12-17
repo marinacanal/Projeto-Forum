@@ -7,9 +7,11 @@ namespace Domain.Forum.Entities
         public Guid CommentId { get; private set; }
         public CommentContent Content { get; private set; }
         public DateTime CreatedAt { get; private set; }
+
+        // relacoes
         public Guid PostId { get; private set; }
-        public Post Post { get; private set; }
-        public Guid UserId { get; private set; }
+        public Post Post { get; private set; } 
+        public Guid UserId { get; private set; }  
         public User User { get; private set; }
         public ICollection<Reaction> Reactions { get; private set; }
 
@@ -24,11 +26,8 @@ namespace Domain.Forum.Entities
             Reactions = new List<Reaction>();
         }
 
-        public void UpdateContent(CommentContent content) 
-        {
-            Content = content;
-        }
-
+        public void UpdateContent(CommentContent content) => Content = content;
+        
         public void AddLike(Reaction reaction) 
         {
             if (reaction == null) throw new ArgumentNullException(nameof(reaction));

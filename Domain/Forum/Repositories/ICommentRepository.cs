@@ -5,9 +5,9 @@ namespace Domain.Forum.Repositories
     public interface ICommentRepository 
     {   
         // get all by
-        Task <List<Comment>> GetAllByPostAsync(Guid postId);
+        Task <List<Comment>> GetAllByPostIdAsync(Guid postId);
 
-        Task <List<Comment>> GetAllByUserAsync(Guid userId);
+        Task <List<Comment>> GetAllByUserIdAsync(Guid userId);
 
         // create
         Task CreateAsync(Comment comment);

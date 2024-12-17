@@ -5,15 +5,13 @@ namespace Domain.Forum.Entities
     public class Reaction
     {
         public Guid ReactionId { get; private set; }
-        public Guid UserId { get; private set; }
-        public User User { get; private set; }
-
-        // post or comment
         public Guid? TargetId { get; private set; }
         public TargetType TargetType { get; private set; }
+        public ReactionType Type { get; private set; } 
 
-        // like or dislike
-        public ReactionType Type { get; private set; }
+        // relacoes
+        public Guid UserId { get; private set; }
+        public User User { get; private set; }
 
         // constructor
         public Reaction(Guid userId, Guid targetId, TargetType targetType, ReactionType reactionType)

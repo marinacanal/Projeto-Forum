@@ -9,7 +9,7 @@ namespace Domain.Forum.Entities
         public PostContent Content { get; private set; }
         public DateTime CreatedAt { get; private set; }
 
-        // related modules
+        // relacoes
         public Guid UserId { get; private set; }
         public User User { get; private set; }
         public Guid ChannelId { get; private set; }

@@ -1,4 +1,5 @@
-using Forum.Models;
+using Domain.Forum.Entities;
+using Domain.Forum.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories

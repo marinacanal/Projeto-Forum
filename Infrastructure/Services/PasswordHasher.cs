@@ -12,7 +12,6 @@ namespace Infrastructure.Security
         private const int TimeCost = 4; // iterações do algoritmo
         private const int DegreeOfParallelism = 2; // threads usadas
 
-        // recebe um valor (password), e retorna dois (hashedPassword, salt)
         public string HashPassword(string password)
         {   
             var saltBytes = new byte[SaltSize]; // inicializa array saltBytes
